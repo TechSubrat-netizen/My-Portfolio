@@ -35,6 +35,30 @@ body{
     display: block;
     opacity: 1;
     padding: 0 30px;
+    position: fixed;
+    left:270px;
+    top:0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.section.back-section{
+    z-index: 1;
+}
+.section.active{
+    z-index: 2;
+    opacity: 1;
+    animation:slideSection 1s ease;
+}
+@keyframes slideSection {
+    0%{
+        transform: translateX(100%);
+    }
+    100%{
+        transform: translateX(0%);
+    }
 }
 .hidden{
     display: none !important;
@@ -43,9 +67,7 @@ body{
     padding-top: 60px;
     padding-bottom: 70px;
 } 
-.main-content{
-    padding-left: 270px;
-}
+
 .padd-15{
     padding-left: 15px;
     padding-right: 15px;
@@ -593,11 +615,11 @@ color: var(--text-black-700);
     padding: 0 50px;
 }
 @media( max-width:1199px){
-    .aside{
+    .sidebar{
         left:-270px;
     }
-    .main-content{
-       padding-left: 0; 
+    .sidebar.nav-toggler{
+        display: flex;
     }
     .about .about-content .personal-info .info-item p span{
         display: block;
@@ -629,5 +651,99 @@ color: var(--text-black-700);
     .about .about-content .personal-info{
         flex:0 0 100%;
         max-width: 100%;
+    }
+}
+/* Default styles for larger screens */
+
+.sidebar {
+    width: 250px;
+}
+
+.main-content {
+    margin-left: 250px;
+}
+
+/* Mobile styles (screens up to 600px) */
+@media screen and (max-width: 600px) {
+    .sidebar {
+        width: 100%;
+        position: relative;
+        display: block;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav li {
+        margin: 10px 0;
+    }
+
+    .home-img img {
+        width: 100%;
+    }
+
+    .skills .progress-in {
+        width: 100%;
+    }
+
+    .buttons {
+        text-align: center;
+    }
+}
+
+/* Tablet styles (screens between 600px and 900px) */
+@media screen and (min-width: 601px) and (max-width: 900px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .main-content {
+        margin-left: 200px;
+    }
+
+    .nav li {
+        font-size: 14px;
+    }
+
+    .home-img img {
+        width: 80%;
+    }
+
+    .skills .progress-in {
+        width: 90%;
+    }
+
+    .about-content .info-item p {
+        font-size: 14px;
+    }
+}
+
+/* Desktop styles (screens larger than 900px) */
+@media screen and (min-width: 901px) {
+    .sidebar {
+        width: 250px;
+    }
+
+    .main-content {
+        margin-left: 250px;
+    }
+
+    .nav li {
+        font-size: 16px;
+    }
+
+    .home-img img {
+        width: 60%;
+    }
+
+    .skills .progress-in {
+        width: 80%;
     }
 }
